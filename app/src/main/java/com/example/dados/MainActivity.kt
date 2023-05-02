@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,6 +48,15 @@ class MainActivity : ComponentActivity() {
 fun RollDice() {
     var randomNumber by remember{ mutableStateOf(1) }
 
+    val imageResource = when (randomNumber) {
+    1 -> R.drawable.dice_1
+    2 -> R.drawable.dice_2
+    3 -> R.drawable.dice_3
+    4 -> R.drawable.dice_4
+    5 -> R.drawable.dice_5
+    else -> R.drawable.dice_6
+}
+
     Text(
         text = "Jogue comigo",
         textAlign = TextAlign.Center,
@@ -64,7 +74,7 @@ fun RollDice() {
         modifier = Modifier.fillMaxSize(),
     ) {
         Image(
-            painter = painterResource(id = R.drawable.dice_1),
+            painter = painterResource(id = imageResource),
             contentDescription = null,
         )
 
